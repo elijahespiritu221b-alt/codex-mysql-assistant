@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Elijah Espiritu's web development portfolio, projects, skills, and experience.">
+
+  <title>Elijah Espiritu | Web Developer Portfolio</title>
+
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+
+    :root {
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #64748b;
+      --primary: #2457c5;
+      --border: #e2e8f0;
+      --soft-blue: #edf3ff;
+      --max-width: 1080px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #60a5fa;
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(90%, var(--max-width));
+      margin: auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin: 8px 0 14px;
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    /* ===== NAVIGATION ===== */
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* ===== HERO ===== */
+
+    .hero {
+      padding: 105px 0 95px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #166534;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 30px;
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+    }
+
+    .availability::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 4.6rem);
+      letter-spacing: -2px;
+      max-width: 780px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border: 1px solid var(--primary);
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #1d46a0;
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--text);
+      border-color: var(--border);
+      margin-left: 8px;
+    }
+
+    .button-secondary:hover {
+      background: #f1f5f9;
+      color: var(--text);
+    }
+
+    /* ===== ABOUT ===== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .info-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-item strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .info-item span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    /* ===== SKILLS ===== */
+
+    .skills-section {
+      background: #f0f4fa;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .skill-number {
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 9px;
+    }
+
+    .skill-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--soft-blue);
+      color: #244b98;
+      padding: 4px 9px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ===== PROJECTS ===== */
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 27px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: #9ab7f4;
+      transform: translateY(-3px);
+    }
+
+    .project-type {
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 13px;
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .project-card .tags {
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .project-note {
+      background: var(--soft-blue);
+      color: #344d7d;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 22px;
+      font-size: 0.88rem;
+    }
+
+    /* ===== WORK APPROACH ===== */
+
+    .approach-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .approach-item {
+      border-left: 3px solid var(--primary);
+      padding-left: 17px;
+    }
+
+    .approach-item h3 {
+      font-size: 1rem;
+      margin-bottom: 9px;
+    }
+
+    .approach-item p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+
+    .contact-box {
+      background: #172b4d;
+      color: white;
+      border-radius: 14px;
+      padding: 45px;
+    }
+
+    .contact-box .eyebrow {
+      color: #a9c5ff;
+    }
+
+    .contact-box h2 {
+      margin-top: 12px;
+    }
+
+    .contact-box p {
+      color: #d2dced;
+      max-width: 620px;
+      margin-bottom: 24px;
+    }
+
+    .contact-box .button {
+      background: white;
+      border-color: white;
+      color: #172b4d;
+    }
+
+    .contact-box .button:hover {
+      background: #eaf0fa;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+
+    @media (max-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-content {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .skills-grid,
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+
+      .button-secondary {
+        margin: 12px 0 0;
+      }
+
+      .contact-box {
+        padding: 27px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a class="brand" href="#home">Elijah<span>.dev</span></a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INTRODUCTION -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+
+        <span class="availability">
+          Web Development Portfolio
+        </span>
+
+        <h1>
+          Creating useful websites with
+          <span>code and creativity.</span>
+        </h1>
+
+        <p class="hero-description">
+          I'm Elijah Espiritu, an aspiring web developer interested
+          in building websites, interactive experiences, and
+          practical digital solutions. I enjoy turning ideas into
+          working projects while improving my technical skills
+          through hands-on development.
+        </p>
+
+        <a href="#projects" class="button">
+          Explore My Projects
+        </a>
+
+        <a href="#about" class="button button-secondary">
+          Learn About Me
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">About Me</span>
+          <h2>Who I am and what I do</h2>
+          <p>
+            An introduction to my interests, experience, and
+            approach to web development.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-text">
+            <p>
+              I'm Elijah Espiritu, a student developing my skills
+              in web development and information technology.
+              I enjoy creating websites that combine a clear
+              structure, thoughtful design, and useful functionality.
+            </p>
+
+            <p>
+              I have worked on a variety of personal coding and
+              website projects. These projects have allowed me to
+              experiment with layouts, animations, interactive
+              elements, and different approaches to presenting
+              information online.
+            </p>
+
+            <p>
+              My current focus is strengthening my understanding
+              of HTML, CSS, JavaScript, responsive design, and
+              code organization. I aim to make my projects easier
+              to use, understand, and maintain.
+            </p>
+
+            <p>
+              I am open to learning from other developers,
+              collaborating on suitable projects, and taking on
+              challenges that help me grow.
+            </p>
+          </div>
+
+          <aside class="info-card">
+            <h3>Profile Overview</h3>
+
+            <div class="info-item">
+              <strong>Primary Interest</strong>
+              <span>Web Development</span>
+            </div>
+
+            <div class="info-item">
+              <strong>Current Focus</strong>
+              <span>Front-End Development</span>
+            </div>
+
+            <div class="info-item">
+              <strong>Core Technologies</strong>
+              <span>HTML, CSS, JavaScript</span>
+            </div>
+
+            <div class="info-item">
+              <strong>Learning Approach</strong>
+              <span>Practical projects and continuous improvement</span>
+            </div>
+
+            <div class="info-item">
+              <strong>Portfolio Goal</strong>
+              <span>Build useful and maintainable websites</span>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Skills and Knowledge</span>
+          <h2>My technical toolkit</h2>
+          <p>
+            Technologies and development areas I use or am
+            actively learning.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <div class="skill-number">01 / STRUCTURE</div>
+            <h3>HTML</h3>
+            <p>
+              Organizing web content with meaningful elements,
+              accessible structure, and clear page sections.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">Semantic Markup</span>
+              <span class="tag">Forms</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-number">02 / PRESENTATION</div>
+            <h3>CSS</h3>
+            <p>
+              Styling page layouts, managing spacing, building
+              responsive interfaces, and creating visual consistency.
+            </p>
+            <div class="tags">
+              <span class="tag">CSS3</span>
+              <span class="tag">Flexbox</span>
+              <span class="tag">Grid</span>
+              <span class="tag">Responsive Design</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-number">03 / INTERACTION</div>
+            <h3>JavaScript</h3>
+            <p>
+              Learning to add dynamic behavior, interactive
+              controls, and useful functionality to websites.
+            </p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">DOM</span>
+              <span class="tag">Events</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-number">04 / DESIGN</div>
+            <h3>Interface Design</h3>
+            <p>
+              Creating organized pages with readable typography,
+              consistent spacing, and straightforward navigation.
+            </p>
+            <div class="tags">
+              <span class="tag">UI Design</span>
+              <span class="tag">Layouts</span>
+              <span class="tag">Usability</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-number">05 / DEVELOPMENT</div>
+            <h3>Code Organization</h3>
+            <p>
+              Practicing readable naming conventions, reusable
+              patterns, and structured project files.
+            </p>
+            <div class="tags">
+              <span class="tag">Clean Code</span>
+              <span class="tag">Debugging</span>
+              <span class="tag">Refactoring</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-number">06 / TOOLS</div>
+            <h3>Development Tools</h3>
+            <p>
+              Using development environments and version-control
+              platforms to organize and manage coding projects.
+            </p>
+            <div class="tags">
+              <span class="tag">VS Code</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">Browser DevTools</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Selected Work</span>
+          <h2>Projects and experiments</h2>
+          <p>
+            A place to present my website projects, explain
+            the technologies behind them, and describe what
+            I learned during development.
+          </p>
+        </div>
+
+        <div class="project-list">
+
+          <article class="project-card">
+            <span class="project-type">Web Development</span>
+            <h3>Interactive Website</h3>
+            <p>
+              A website focused on combining structured content
+              with interactive elements. The project explores
+              page layout, responsive behavior, and clear navigation.
+            </p>
+
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+
+            <!-- Replace # with your actual project URL -->
+            <a class="project-link" href="#contact">
+              Project details available on request
+            </a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Creative Coding</span>
+            <h3>Animated Digital Experience</h3>
+            <p>
+              An experiment in presenting visual ideas through
+              code, using animations, carefully arranged elements,
+              and interactive browser features.
+            </p>
+
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS Animation</span>
+              <span class="tag">JavaScript</span>
+            </div>
+
+            <a class="project-link" href="#contact">
+              Project details available on request
+            </a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Personal Project</span>
+            <h3>Personal Website</h3>
+            <p>
+              A custom website developed to explore visual
+              presentation, typography, navigation, and the
+              process of turning an idea into a working page.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Web Design</span>
+              <span class="tag">Responsive Layout</span>
+              <span class="tag">Frontend</span>
+            </div>
+
+            <a class="project-link" href="#contact">
+              Project details available on request
+            </a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Ongoing Learning</span>
+            <h3>Web Development Experiments</h3>
+            <p>
+              Small projects used to practice new techniques,
+              test different layouts, troubleshoot problems,
+              and improve code readability.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Practice</span>
+              <span class="tag">Learning</span>
+            </div>
+
+            <a class="project-link" href="#contact">
+              Project details available on request
+            </a>
+          </article>
+
+        </div>
+
+        <div class="project-note">
+          Replace the sample project descriptions and links
+          with your real projects before publishing this portfolio.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WORKING APPROACH -->
+    <section class="section approach-section" id="approach">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">How I Work</span>
+          <h2>My development approach</h2>
+          <p>
+            The principles I aim to follow when creating
+            and improving websites.
+          </p>
+        </div>
+
+        <div class="approach-grid">
+
+          <article class="approach-item">
+            <h3>Understand the Goal</h3>
+            <p>
+              Identify the purpose of the website, the needs
+              of its users, and the requirements of the project
+              before deciding how to build it.
+            </p>
+          </article>
+
+          <article class="approach-item">
+            <h3>Build with Structure</h3>
+            <p>
+              Organize page sections and code so that the
+              project remains readable and easier to update
+              as requirements change.
+            </p>
+          </article>
+
+          <article class="approach-item">
+            <h3>Test and Improve</h3>
+            <p>
+              Check layouts on different screen sizes, test
+              interactions, fix problems, and make improvements
+              based on the results.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="contact-box">
+          <span class="eyebrow">Contact</span>
+
+          <h2>Let's discuss a project.</h2>
+
+          <p>
+            I'm interested in learning from other developers,
+            collaborating on appropriate projects, and exploring
+            opportunities to grow in web development. If you have
+            a project idea or would like to discuss my work,
+            feel free to get in touch.
+          </p>
+
+          <!-- Replace this placeholder with your actual email -->
+          <a
+            class="button"
+            href="mailto:your-email@example.com"
+          >
+            Contact Me
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Elijah Espiritu</p>
+      <p>Web Development Portfolio</p>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically display the current year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
